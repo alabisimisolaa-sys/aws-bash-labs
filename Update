@@ -1,0 +1,38 @@
+[ec2-user@ip-10-0-10-160 ~]$ #!/bin/bash
+[ec2-user@ip-10-0-10-160 ~]$ USER_NAME="Simisola"
+[ec2-user@ip-10-0-10-160 ~]$ MAX_NUM=$(ls ${USER_NAME}* 2>/dev/null | sed "s/^${USER_NAME}//" | sort -n | tail -1)
+[ec2-user@ip-10-0-10-160 ~]$ MAX_NUM=$(ls ${USER_NAME}* 2>/dev/null | sed "s/^${USER_NAME}//" | sort -n | tail -1)
+[ec2-user@ip-10-0-10-160 ~]$ if [ -z "$MAX_NUM" ]; then
+> MAX_NUM=0
+> fi
+[ec2-user@ip-10-0-10-160 ~]$ START=$((MAX_NUM + 1))
+[ec2-user@ip-10-0-10-160 ~]$ END=$((MAX_NUM + 25))
+[ec2-user@ip-10-0-10-160 ~]$ for (( i=$START; i<=$END; i++))
+> do
+> touch "${USER_NAME}${i}"
+> done
+[ec2-user@ip-10-0-10-160 ~]$ echo "Created files from ${USER_NAME}${START} to ${USER_NAME}&{END}"
+Created files from Simisola26 to Simisola&{END}
+[ec2-user@ip-10-0-10-160 ~]$
+[ec2-user@ip-10-0-10-160 ~]$ hmod +x create_files.sh
+-bash: hmod: command not found
+[ec2-user@ip-10-0-10-160 ~]$ ./create_files.sh
+-bash: ./create_files.sh: No such file or directory
+[ec2-user@ip-10-0-10-160 ~]$ ls ${USER_NAME}*
+Simisola1   Simisola19  Simisola28  Simisola37  Simisola46
+Simisola10  Simisola2   Simisola29  Simisola38  Simisola47
+Simisola11  Simisola20  Simisola3   Simisola39  Simisola48
+Simisola12  Simisola21  Simisola30  Simisola4   Simisola49
+Simisola13  Simisola22  Simisola31  Simisola40  Simisola5
+Simisola14  Simisola23  Simisola32  Simisola41  Simisola50
+Simisola15  Simisola24  Simisola33  Simisola42  Simisola6
+Simisola16  Simisola25  Simisola34  Simisola43  Simisola7
+Simisola17  Simisola26  Simisola35  Simisola44  Simisola8
+Simisola18  Simisola27  Simisola36  Simisola45  Simisola9
+[ec2-user@ip-10-0-10-160 ~]$ sed "s/^${USER_NAME}//"
+sort -n
+sort -n
+tail -1
+tail -1
+touch
+touch

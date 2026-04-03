@@ -1,0 +1,56 @@
+[ec2-user@ip-10-0-10-160 ~]$ #!/bin/bash
+[ec2-user@ip-10-0-10-160 ~]$ USER_NAME="Simisola"
+[ec2-user@ip-10-0-10-160 ~]$ # Get the highest number from ex                                                                                                isting files (e.g., Simisola10 -> 10)
+[ec2-user@ip-10-0-10-160 ~]$ MAX_NUM=$(ls ${USER_NAME}* 2>/de                                                                                                v/null | sed "s/^${USER_NAME}//" | sort -n | tail -1)
+[ec2-user@ip-10-0-10-160 ~]$
+[ec2-user@ip-10-0-10-160 ~]$ # If no files exist, start at 0
+[ec2-user@ip-10-0-10-160 ~]$ if [ -z "$MAX_NUM" ]; then
+>     MAX_NUM=0
+> fi
+[ec2-user@ip-10-0-10-160 ~]$ START=$((MAX_NUM + 1))
+[ec2-user@ip-10-0-10-160 ~]$ END=$((MAX_NUM + 25))
+[ec2-user@ip-10-0-10-160 ~]$
+[ec2-user@ip-10-0-10-160 ~]$ for (( i=$START; i<=$END; i++ ))
+> do
+>     touch "${USER_NAME}${i}"
+> done
+[ec2-user@ip-10-0-10-160 ~]$
+[ec2-user@ip-10-0-10-160 ~]$ echo "Successfully created files                                                                                                 ${START} through ${END}."
+Successfully created files 1 through 25.
+[ec2-user@ip-10-0-10-160 ~]$ ^C
+[ec2-user@ip-10-0-10-160 ~]$ echo "Successfully created files ${START} throug                                                                                h ${END}."
+Successfully created files 1 through 25.
+[ec2-user@ip-10-0-10-160 ~]$ ld -la Simisola*
+ld: cannot find -la
+Simisola1: file not recognized: File truncated
+[ec2-user@ip-10-0-10-160 ~]$ ls -la Simisola*
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola1
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola10
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola11
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola12
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola13
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola14
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola15
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola16
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola17
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola18
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola19
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola2
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola20
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola21
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola22
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola23
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola24
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola25
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola3
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola4
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola5
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola6
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola7
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola8
+-rw-rw-r-- 1 ec2-user ec2-user 0 Apr  3 17:44 Simisola9
+[ec2-user@ip-10-0-10-160 ~]$ ./create_files.sh
+-bash: ./create_files.sh: No such file or directory
+[ec2-user@ip-10-0-10-160 ~]$ ./create_files.sh ls -la Simisola*
+-bash: ./create_files.sh: No such file or directory
+[ec2-user@ip-10-0-10-160 ~]$
